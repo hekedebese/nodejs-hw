@@ -1,7 +1,7 @@
 // src/controllers/studentsController.js
 
 import createHttpError from 'http-errors';
-import { Note } from '../models/notes.js';
+import { Note } from '../models/note.js';
 
 // Отримати список усіх студентів
 export const getAllNotes = async (req, res) => {
