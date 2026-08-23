@@ -10,7 +10,7 @@ const noteSchema = new Schema(
     },
     content: {
       type: String,
-      default: false,
+      default: '',
       trim: true,
     },
     tag: {
@@ -33,8 +33,8 @@ const noteSchema = new Schema(
   },
   {
     timestamps: true,
-    versionKeya: false,
+    versionKey: false,
   },
 );
 
-export const Note = model('Notes', noteSchema);
+export const Note = model('Note', noteSchema);
