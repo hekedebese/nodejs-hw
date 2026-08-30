@@ -1,7 +1,7 @@
 // src/db/connectMongoDB.js
 
 import mongoose from 'mongoose';
-import { Student } from '../models/student.js';
+import { Note } from '../models/note.js';
 
 export const connectMongoDB = async () => {
   try {
@@ -9,7 +9,7 @@ export const connectMongoDB = async () => {
     await mongoose.connect(mongoUrl);
     console.log('✅ MongoDB connection established successfully'); // гарантуємо, що індекси в БД відповідають схемі
 
-    await Student.syncIndexes();
+    await Note.syncIndexes();
     console.log('Indexes synced successfully');
   } catch (error) {
     console.error('❌ Failed to connect to MongoDB:', error.message);
