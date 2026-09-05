@@ -4,7 +4,7 @@ import { isValidObjectId } from 'mongoose';
 import { TAGS } from '../constants/tags.js';
 
 const objectIdValidator = Joi.string().custom((value, helpers) => {
-  return !isValidObjectId ? helpers.message('Invalid id format') : value;
+  return !isValidObjectId(value) ? helpers.message('Invalid id format') : value;
 });
 
 export const getAllNotesSchema = {
