@@ -33,6 +33,6 @@ const noteSchema = new Schema(
 );
 
 // Індекс для пошуку по tag
-noteSchema.index({ tag: 1 });
+noteSchema.index({ tag: 1, userId: 1 });
 
 export const Note = model('Note', noteSchema);
