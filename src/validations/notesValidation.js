@@ -3,12 +3,8 @@ import { isValidObjectId } from 'mongoose';
 
 import { TAGS } from '../constants/tags.js';
 
-const objectId = Joi.string().custom((value, helpers) => {
-  if (!isValidObjectId(value)) {
-    return helpers.message('Invalid noteId');
-  }
-
-  return value;
+const objectIdValidator = Joi.string().custom((value, helpers) => {
+  return !isValidObjectId ? helpers.message('Invalid id format') : value;
 });
 
 export const getAllNotesSchema = {
@@ -22,7 +18,7 @@ export const getAllNotesSchema = {
 
 export const noteIdSchema = {
   [Segments.PARAMS]: Joi.object({
-    noteId: objectId.required(),
+    noteId: Joi.string.custom(objectIdValidator).required(),
   }),
 };
 
@@ -36,7 +32,7 @@ export const createNoteSchema = {
 
 export const updateNoteSchema = {
   [Segments.PARAMS]: Joi.object({
-    noteId: objectId.required(),
+    noteId: Joi.string.custom(objectIdValidator).required(),
   }),
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1),
