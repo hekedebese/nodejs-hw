@@ -9,7 +9,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import handlebars from 'handlebars';
 
-import { sendMail } from '../utils/sendMail.js';
+import { sendEMail } from '../utils/sendMail.js';
 import { createSession, setSessionCookies } from '../services/auth.js';
 import { Session } from '../models/session.js';
 
